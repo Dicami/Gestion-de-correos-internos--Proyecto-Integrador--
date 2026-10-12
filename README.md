@@ -1,6 +1,6 @@
-# CorpLink - Sistema de Chat Empresarial Inter-Sedes
+# CorpLink - Gestion de Correos Internos 
 
-Sistema de comunicación interna y chat empresarial cliente-servidor desarrollado en **Go** e integrado con un servicio de autenticación en **FastAPI (Python)**. Esta solución permite la interacción segura, autenticada y trazable mediante mensajería directa y canales entre los colaboradores de la Sede A y Sede B.
+Sistema de comunicación interna y correo empresarial cliente-servidor desarrollado en **Go** e integrado con un servicio de autenticación en FastAPI. Esta solución permite la interacción segura, autenticada y trazable mediante bandejas de entrada, envío de mensajes y gestión de correspondencia local entre los colaboradores de la Sede A y Sede B.
 
 ---
 
@@ -10,9 +10,9 @@ La solución responde a la problemática de la empresa tecnológica tras la aper
 
 Connecta centraliza la comunicación a través de:
 
-- **Servidor de Chat (Go):** Gestiona la conexión de clientes mediante WebSockets, procesa rutas REST para el historial y canales, e implementa persistencia de mensajes y registros de sesión.
-- **Servicio de Autenticación (FastAPI):** Gestiona la verificación de credenciales corporativas (contraseñas con hash `bcrypt`) y la emisión de tokens JWT.
-- **Cliente de Consola (Go):** Interfaz CLI liviana que permite a los colaboradores enviar/recibir mensajes directos, unirse a canales y consultar historiales.
+- **Servidor de Correo (Go):** Gestiona la lógica cliente-servidor, procesa rutas REST para el almacenamiento, consulta de bandejas (entrada y enviados), lectura y eliminación lógica de correos institucionales de manera completamente independiente de un servicio SMTP externo.
+- **Servicio de Autenticación (FastAPI):** Gestiona la verificación de credenciales corporativas (contraseñas con hash bcrypt) y la emisión de tokens JWT.
+- **Cliente de Consola (Go):** Interfaz CLI liviana que permite a los colaboradores redactar correos, consultar su bandeja de entrada, revisar elementos enviados y gestionar sus mensajes de forma local.
 
 ---
 
@@ -27,28 +27,25 @@ Connecta centraliza la comunicación a través de:
 ## Alcance Preliminar
 
 ### Incluido en el Proyecto
-- **Autenticación Segura:** Inicio de sesión con correo corporativo y contraseñas protegidas mediante hash `bcrypt`. Emisión de tokens JWT con roles (Usuario y Administrador).
-- **Mensajería Básica:** Mensajes de texto directos (persona a persona) y mensajes en canales/grupos.
-- **Historial de Mensajes:** Consulta de los últimos 50 mensajes por conversación.
-- **Control de Sesiones:** Expiración automática de sesión a los 60 minutos, cierre manual y registro de *timestamps* de inicio/fin.
-- **Administración y Configuración:** Creación de perfiles, gestión de permisos, creación de canales públicos/privados y auditoría de conversaciones.
-- **Componente Estadístico:** Registro de eventos de uso (mensajes, sesiones, tiempos) y exportación de métricas a CSV.
-- **Despliegue Distribuido:** Servidor Go y FastAPI en la Sede A, conectando a clientes ubicados tanto en la Sede A como en la Sede B a través de la red corporativa.
+- **Autenticación Segura:** Inicio de sesión con correo corporativo y contraseñas protegidas mediante hash bcrypt. Emisión de tokens JWT con roles (Usuario y Administrador).   
+- **Gestión de Correos Internos:** Bandeja de entrada, mensajes enviados, redacción, lectura de correspondencia y eliminación de correos de forma local y privada.   
+- **Control de Sesiones:** Expiración automática de sesión, cierre manual y registro de timestamps de inicio/fin.   
+- **Infraestructura Distribuida:** Despliegue de los servicios en la VLAN de servidores (VLAN 20) en ambas sedes, comunicándose mediante enrutamiento dinámico OSPF sobre OpenWrt.   
+- **Componente Estadístico:** Recolección de eventos de uso y métricas técnicas para su análisis descriptivo.
 
 ### Fuera del Alcance
-- Envío de archivos, imágenes, audios o documentos (solo mensajes de texto)
-- Llamadas de voz o video
-- Interfaz gráfica (GUI), aplicaciones móviles o web (el cliente es de consola)
-- Cifrado de extremo a extremo (E2EE); la protección se basa en contraseñas con hash y tokens JWT
-- Edición o eliminación de mensajes enviados
-- Alta disponibilidad, balanceo de carga y despliegue en la nube (excluidos por el documento del Proyecto Integrador, sección 2.4)
+- **Servidores externos:** Integración con servidores SMTP públicos o externos.
+- **Archivos adjuntos:** Envío de archivos adjuntos pesados, imágenes o documentos multimedia complejos.
+- **Comunicación en tiempo real:** Llamadas de voz, video o mensajería instantánea en tiempo real vía WebSockets.
+- **Interfaz gráfica:** Interfaz gráfica (GUI) o aplicaciones móviles (el cliente opera exclusivamente por consola).
+- **Infraestructura en la nube:** Alta disponibilidad avanzada y balanceo de carga en la nube.
 
 ---
 
 ## Estructura del Repositorio
 
 ```text
-Chat-empresarial/
+Gestion de correos /
 ├── app-go/                  # Cliente y Servidor en Go
 ├── auth-service/            # Servicio de autenticación en FastAPI (Python)
 ├── network/                 # Configuración de red y reglas de comunicación inter-sedes
