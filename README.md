@@ -30,7 +30,7 @@ Connecta centraliza la comunicación a través de:
 - **Autenticación Segura:** Inicio de sesión con correo corporativo y contraseñas protegidas mediante hash bcrypt. Emisión de tokens JWT con roles (Usuario y Administrador).   
 - **Gestión de Correos Internos:** Bandeja de entrada, mensajes enviados, redacción, lectura de correspondencia y eliminación de correos de forma local y privada.   
 - **Control de Sesiones:** Expiración automática de sesión, cierre manual y registro de timestamps de inicio/fin.   
-- **Infraestructura Distribuida:** Despliegue de los servicios en la VLAN de servidores (VLAN 20) en ambas sedes, comunicándose mediante enrutamiento dinámico OSPF sobre OpenWrt.   
+- **Infraestructura Distribuida:** Despliegue de los servicios en la VLAN de servidores en ambas sedes, comunicándose mediante enrutamiento dinámico OSPF sobre OpenWrt.   
 - **Componente Estadístico:** Recolección de eventos de uso y métricas técnicas para su análisis descriptivo.
 
 ### Fuera del Alcance
