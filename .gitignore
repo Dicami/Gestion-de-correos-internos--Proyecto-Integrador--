@@ -1,0 +1,9 @@
+app-go/data/maizap.json
+app-go/data/*.tmp
+app-go/bin/
+*.exe
+*.test
+*.out
+.DS_Store
+.idea/
+.vscode/
