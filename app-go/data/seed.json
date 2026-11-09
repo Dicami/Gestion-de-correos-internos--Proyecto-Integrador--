@@ -1,0 +1,71 @@
+{
+  "next_user_seq": 4,
+  "next_message_seq": 2,
+  "users": [
+    {
+      "id": "USR-0001",
+      "name": "Administrador TI",
+      "email": "admin@maizap.com",
+      "site": "A",
+      "area": "Tecnologia",
+      "role": "administrador",
+      "active": true,
+      "created_at": "2026-11-01T08:00:00-05:00"
+    },
+    {
+      "id": "USR-0002",
+      "name": "Ana Torres",
+      "email": "ana.torres@maizap.com",
+      "site": "A",
+      "area": "Compras",
+      "role": "usuario",
+      "active": true,
+      "created_at": "2026-11-01T08:05:00-05:00"
+    },
+    {
+      "id": "USR-0003",
+      "name": "Luis Paredes",
+      "email": "luis.paredes@maizap.com",
+      "site": "B",
+      "area": "Logistica",
+      "role": "usuario",
+      "active": true,
+      "created_at": "2026-11-01T08:10:00-05:00"
+    },
+    {
+      "id": "USR-0004",
+      "name": "Marta Ruiz",
+      "email": "marta.ruiz@maizap.com",
+      "site": "B",
+      "area": "Ventas",
+      "role": "usuario",
+      "active": false,
+      "created_at": "2026-11-01T08:15:00-05:00"
+    }
+  ],
+  "messages": [
+    {
+      "id": "MSG-000001",
+      "from": "USR-0002",
+      "to": ["USR-0003"],
+      "subject": "Confirmacion de despacho pedido 1042",
+      "body": "Hola Luis, por favor confirma si el pedido 1042 sale hoy desde la Sede B.\nGracias.",
+      "sent_at": "2026-11-02T09:30:00-05:00"
+    },
+    {
+      "id": "MSG-000002",
+      "from": "USR-0003",
+      "to": ["USR-0002", "USR-0001"],
+      "subject": "Re: Confirmacion de despacho pedido 1042",
+      "body": "Confirmado, el pedido sale a las 15:00. Copio a TI para registro.",
+      "sent_at": "2026-11-02T10:05:00-05:00"
+    }
+  ],
+  "entries": [
+    { "owner": "USR-0002", "message_id": "MSG-000001", "folder": "sent", "read_at": "2026-11-02T09:30:00-05:00" },
+    { "owner": "USR-0003", "message_id": "MSG-000001", "folder": "inbox", "read_at": "2026-11-02T09:45:00-05:00" },
+    { "owner": "USR-0003", "message_id": "MSG-000002", "folder": "sent", "read_at": "2026-11-02T10:05:00-05:00" },
+    { "owner": "USR-0002", "message_id": "MSG-000002", "folder": "inbox" },
+    { "owner": "USR-0001", "message_id": "MSG-000002", "folder": "inbox" }
+  ]
+}
